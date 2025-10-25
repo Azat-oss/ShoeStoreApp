@@ -1,0 +1,14 @@
+﻿<Window x:Class="ShoeStoreApp.Views.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="О проекте" Height="520" Width="600"
+ WindowStartupLocation="CenterOwner"
+ ResizeMode="NoResize"
+        Background="{DynamicResource ThemeBrush}">
+    
+    <Grid>
+        <Image Height="100" Margin="0,50,0,0" VerticalAlignment="Top" Width="100" HorizontalAlignment="Center" Source="/Views/Top-academy.jpg"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,159,0,0" TextWrapping="Wrap" Text="Выполнил студент Академии TOP Юзмухаметов А.Ш." VerticalAlignment="Top" Height="100" Width="170" TextAlignment="Center" FontSize="16"/>
+
+    </Grid>
+</Window>

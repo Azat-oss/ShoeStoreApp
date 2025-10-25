@@ -1,0 +1,20 @@
+﻿<Window x:Class="ShoeStoreApp.Views.CustomMessageBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="Сообщение:" Height="150" Width="200"
+ WindowStartupLocation="CenterOwner"
+ ResizeMode="NoResize"
+        Background="{DynamicResource ThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>           
+            <RowDefinition Height="20"/>           
+            <RowDefinition Height="40"/>
+           
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="{Binding Message}" Margin="0,30,0,0" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center"/>
+        <Button Content="OK" Click="OnOkClick" Margin="0,10,0,0" HorizontalAlignment="Center" Width="75" Grid.Row="2"/>
+    </Grid>
+</Window>

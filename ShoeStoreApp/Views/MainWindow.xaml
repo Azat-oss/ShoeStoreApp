@@ -1,0 +1,82 @@
+﻿<Window x:Class="ShoeStoreApp.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2006"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:ShoeStoreApp.ViewModels"
+        mc:Ignorable="d"
+        Title="Интернет-магазин обуви" Height="600" Width="1200"
+        Background="{DynamicResource ThemeBrush}"
+        >
+        <!--Background="{DynamicResource ThemeBrush}">-->
+    <!--<Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>-->
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Меню -->
+        <Menu Grid.Row="0">
+            <MenuItem Header="Редактирование">
+                <MenuItem Header="Добавить обувь" Command="{Binding AddShoeCommand}" />
+                <MenuItem Header="Удалить обувь" Command="{Binding DeleteShoeCommand}" />
+            </MenuItem>
+
+
+            <MenuItem Header="О проекте">
+                <MenuItem Header="Разработчик" Command="{Binding AboutCommand}" CommandParameter="Зима"/>
+
+            </MenuItem>
+
+            <MenuItem Header="Тема">
+                <MenuItem Header="Зима" Command="{Binding ChangeThemeCommand}" CommandParameter="Зима"/>
+                <MenuItem Header="Весна" Command="{Binding ChangeThemeCommand}" CommandParameter="Весна"/>
+                <MenuItem Header="Лето" Command="{Binding ChangeThemeCommand}" CommandParameter="Лето"/>
+                <MenuItem Header="Осень" Command="{Binding ChangeThemeCommand}" CommandParameter="Осень"/>
+            </MenuItem>
+
+
+
+
+
+        </Menu>
+
+     
+
+        <!-- Фильтрация -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,10">
+            <TextBlock Text="Группа:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <ComboBox ItemsSource="{Binding Groups}" SelectedItem="{Binding SelectedGroup}" MinWidth="120" Margin="0,0,10,0"/>
+
+            <TextBlock Text="Размер:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <ComboBox ItemsSource="{Binding Sizes}" SelectedItem="{Binding SelectedSize}" MinWidth="80" Margin="0,0,10,0"/>
+
+            <TextBlock Text="Модель:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <ComboBox ItemsSource="{Binding Models}" SelectedItem="{Binding SelectedModel}" MinWidth="150"/>
+            <Button Content="Сбросить фильтры" Command="{Binding ResetFiltersCommand}" Margin="10,0,0,0"  Padding="5"/>
+            
+        </StackPanel>
+
+        <!-- Список обуви -->
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Shoes}" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Группа" Binding="{Binding Group}" Width="100"/>
+                <DataGridTextColumn Header="Артикул" Binding="{Binding Article}" Width="100"/>
+                <DataGridTextColumn Header="Производитель" Binding="{Binding Manufacturer}" Width="120"/>
+                <DataGridTextColumn Header="Размер" Binding="{Binding Size}" Width="60"/>
+                <DataGridTextColumn Header="Цвет" Binding="{Binding Color}" Width="80"/>
+                <DataGridTextColumn Header="Материал" Binding="{Binding Material}" Width="100"/>
+                <DataGridTextColumn Header="Модель" Binding="{Binding ModelName}" Width="100"/>
+                <DataGridTextColumn Header="Дата пр-ва" Binding="{Binding ProductionDate, StringFormat=d}" Width="100"/>
+                <DataGridTextColumn Header="Гарантия (мес)" Binding="{Binding WarrantyMonths}" Width="80"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price, StringFormat='{}{0:# ##0.00} ₽'}" Width="80"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
